@@ -1,12 +1,17 @@
 import { ChangeEvent, useState } from 'react';
-import styles from './productionField.module.scss';
+import styles from './amountField.module.scss';
 
-interface ProductionFieldType {
+interface AmountFieldType {
   defaultValue?: number;
   minValue?: number;
+  step?: number;
 }
 
-export const ProductionField = ({ defaultValue = 1, minValue = 0 }: ProductionFieldType) => {
+export const AmountField = ({
+  defaultValue = 1,
+  minValue = 0,
+  step = 1
+}: AmountFieldType) => {
   const [value, setValue] = useState(defaultValue);
   
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -14,17 +19,21 @@ export const ProductionField = ({ defaultValue = 1, minValue = 0 }: ProductionFi
   };
 
   const increaseInputValue = () => {
-    setValue(prev => prev + 1);
+    setValue(prev => prev + step);
   };
 
   const decreaseInputValue = () => {
-    setValue(prev => prev - 1);
+    if (value - step < minValue) {
+        setValue(minValue);
+    } else {
+      setValue(prev => prev - step);
+    }
   };
 
   return (
     <div className={styles.wrapper}>
       <button className={styles.changeValueButton} onClick={decreaseInputValue} >
-        {'-1'}
+        {`-${step}`}
       </button>
       <input
         className={styles.input}
@@ -34,7 +43,7 @@ export const ProductionField = ({ defaultValue = 1, minValue = 0 }: ProductionFi
         value={value}
       />
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
-        {'+1'}
+        {`+${step}`}
       </button>
     </div>
   );
