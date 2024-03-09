@@ -1,4 +1,6 @@
+@use './config/variables.scss' as v;
+
 .header {
   margin-top: 0;
-  color: #86501c;
+  color: v.$headerBrown;
 }
