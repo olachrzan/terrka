@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.changeValueButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 2px solid #792306;
+  border-radius: 50%;
+  color: #792306;
+
+  &:active {
+    outline: 2px solid rgb(121, 35, 6, 37%);
+  }
+}
+
+.input {
+  width: 50px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid #792306;
+  color: #792306;
+  text-align: center;
+}
