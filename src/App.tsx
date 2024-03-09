@@ -1,7 +1,7 @@
-import React from 'react';
+import styles from './app.module.scss';
 
 const App = () => (
-  <h1>TFM - resources manager</h1>
+  <h1 className={styles.header}>TFM - resources manager</h1>
 );
 
 export default App;
