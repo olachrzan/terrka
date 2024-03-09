@@ -3,14 +3,16 @@ import styles from './amountField.module.scss';
 
 interface AmountFieldType {
   defaultValue?: number;
+  isStock?: boolean;
   minValue?: number;
   step?: number;
 }
 
 export const AmountField = ({
   defaultValue = 1,
+  isStock = false,
   minValue = 0,
-  step = 1
+  step = 1,
 }: AmountFieldType) => {
   const [value, setValue] = useState(defaultValue);
   
@@ -32,6 +34,7 @@ export const AmountField = ({
 
   return (
     <div className={styles.wrapper}>
+      <span className={styles.title}>{isStock ? 'stock:' : 'production:' }</span>
       <button className={styles.changeValueButton} onClick={decreaseInputValue} >
         {`-${step}`}
       </button>

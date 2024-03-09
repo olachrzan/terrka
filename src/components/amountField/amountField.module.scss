@@ -1,16 +1,16 @@
 @use '../../config/variables.scss' as v;
 
 .wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 30px 60px 30px;
   align-items: center;
-  column-gap: 10px;
+  gap: 2px 10px;
 }
 
 .changeValueButton {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
   height: 30px;
   background-color: v.$white;
   border: 2px solid v.$brown;
@@ -22,8 +22,14 @@
   }
 }
 
+.title {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: v.$brown;
+  font-size: 12px;
+}
+
 .input {
-  width: 60px;
   padding: 5px;
   background-color: v.$white;
   border: 2px solid v.$brown;
