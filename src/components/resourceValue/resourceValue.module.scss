@@ -1,0 +1,13 @@
+@use '../../config/variables.scss' as v;
+@use '../../config/mixins';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.input {
+  @include mixins.input;
+  width: 30px;
+}

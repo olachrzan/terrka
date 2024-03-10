@@ -1,0 +1,13 @@
+@use './variables.scss' as v;
+
+@mixin input {
+  padding: 5px;
+  background-color: v.$white;
+  border: 2px solid v.$brown;
+  color: v.$brown;
+  text-align: center;
+
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  }
+}
