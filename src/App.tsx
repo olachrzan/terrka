@@ -1,11 +1,10 @@
 import styles from './app.module.scss';
 import { StockValueProvider } from './providers/StockValue';
-import { Energy } from './sections/energy/Energy';
-import { Heat } from './sections/heat/Heat';
 import { MegaCredit } from './sections/megaCredit/MegaCredit';
 import { Plants } from './sections/plants/Plants';
-import { Steel } from './sections/steel/Steel';
-import { Titanium } from './sections/titanium/Titanium';
+import { MonetizableResources } from './sections/monetizableResources/MonetizableResources';
+import { Energy } from './sections/energy/Energy';
+import { Heat } from './sections/heat/Heat';
 
 const App = () => (
   <div className={styles.wrapper}>
@@ -13,10 +12,10 @@ const App = () => (
     <MegaCredit />
     <Plants />
     <StockValueProvider initialValuePerItem={2}>
-      <Steel />
+      <MonetizableResources isSteel />
     </StockValueProvider>
     <StockValueProvider initialValuePerItem={3}>
-      <Titanium />
+      <MonetizableResources />
     </StockValueProvider>
     <Energy />
     <Heat />

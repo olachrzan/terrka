@@ -1,7 +1,7 @@
 import { ChangeEvent, SetStateAction, useContext, useState } from 'react';
-import { StockValueContext } from '../../providers/StockValue';
+import { StockValueContext } from '../../../providers/StockValue';
 import styles from './resourceValue.module.scss';
-import { Icon } from '../icon/Icon';
+import { Icon } from '../../../components/icon/Icon';
 
 interface ResourceValueType {
   dividentSrc: string;
