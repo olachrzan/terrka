@@ -9,7 +9,7 @@ export const MegaCredit = () => {
     <SectionWrapper>
       <Icon src={icon} />
       <AmountField defaultValue={0} minValue={-5} />
-      <AmountField defaultValue={0} isStock />
+      <AmountField defaultValue={20} isStock />
     </SectionWrapper>
   )
 };

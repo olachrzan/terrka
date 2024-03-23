@@ -10,9 +10,9 @@ export const Steel = () => {
   return (
     <SectionWrapper>
       <Icon src={icon} />
-      <ResourceValue multiplier={2} dividentSrc={buildingIcon} divisorSrc={icon} />
+      <ResourceValue minValue={2} dividentSrc={buildingIcon} divisorSrc={icon} />
       <AmountField />
-      <AmountField isStock defaultValue={2} step={2} />
+      <AmountField isStock />
     </SectionWrapper>
   )
 };

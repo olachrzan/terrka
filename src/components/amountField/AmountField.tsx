@@ -3,16 +3,14 @@ import styles from './amountField.module.scss';
 
 interface AmountFieldType {
   defaultValue?: number;
-  isStock?: boolean;
   minValue?: number;
-  step?: number;
+  isStock?: boolean;
 }
 
 export const AmountField = ({
   defaultValue = 1,
   isStock = false,
   minValue = 0,
-  step = 1,
 }: AmountFieldType) => {
   const [value, setValue] = useState(defaultValue);
   
@@ -21,14 +19,14 @@ export const AmountField = ({
   };
 
   const increaseInputValue = () => {
-    setValue(prev => prev + step);
+    setValue(prev => prev + 1);
   };
 
   const decreaseInputValue = () => {
-    if (value - step < minValue) {
+    if (value - 1 < minValue) {
         setValue(minValue);
     } else {
-      setValue(prev => prev - step);
+      setValue(prev => prev - 1);
     }
   };
 
@@ -36,7 +34,7 @@ export const AmountField = ({
     <div className={styles.wrapper}>
       <span className={styles.title}>{isStock ? 'stock:' : 'production:' }</span>
       <button className={styles.changeValueButton} onClick={decreaseInputValue} >
-        {`-${step}`}
+        {'-1'}
       </button>
       <input
         className={styles.input}
@@ -46,7 +44,7 @@ export const AmountField = ({
         value={value}
       />
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
-        {`+${step}`}
+        {'+1'}
       </button>
     </div>
   );

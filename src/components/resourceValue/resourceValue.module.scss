@@ -11,3 +11,8 @@
   @include mixins.input;
   width: 30px;
 }
+
+.currency {
+  color: v.$brown;
+  font-size: 15px;
+}

@@ -3,13 +3,13 @@ import styles from './resourceValue.module.scss';
 import { Icon } from '../icon/Icon';
 
 interface ResourceValueType {
-  multiplier: number;
   dividentSrc: string;
   divisorSrc: string;
+  minValue: number;
 }
 
-export const ResourceValue = ({ multiplier, dividentSrc, divisorSrc }: ResourceValueType) => {
-  const [value, setValue] = useState(multiplier);
+export const ResourceValue = ({ dividentSrc, divisorSrc, minValue }: ResourceValueType) => {
+  const [value, setValue] = useState(minValue);
   const maxValue = 20;
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +19,8 @@ export const ResourceValue = ({ multiplier, dividentSrc, divisorSrc }: ResourceV
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);
 
-    if (currentValue <= multiplier) {
-      setValue(multiplier);
+    if (currentValue <= minValue) {
+      setValue(minValue);
     } else if (currentValue >= maxValue) {
       setValue(maxValue);
     } else {
@@ -38,11 +38,12 @@ export const ResourceValue = ({ multiplier, dividentSrc, divisorSrc }: ResourceV
         className={styles.input}
         onChange={handleInputChange}
         onBlur={handleOnBlur}
-        value={Number(value)}
+        value={value}
         type={'number'}
-        min={multiplier}
+        min={minValue}
         max={maxValue}
       />
+      <span className={styles.currency}>M€</span>
     </div>
   );
 };

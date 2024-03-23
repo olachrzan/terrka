@@ -10,9 +10,9 @@ export const Titanium = () => {
   return (
     <SectionWrapper>
       <Icon src={icon} />
-      <ResourceValue multiplier={3} dividentSrc={spaceIcon} divisorSrc={icon} />
+      <ResourceValue minValue={3} dividentSrc={spaceIcon} divisorSrc={icon} />
       <AmountField />
-      <AmountField isStock defaultValue={3} step={3} />
+      <AmountField isStock />
     </SectionWrapper>
   )
 };
