@@ -1,30 +1,36 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, SetStateAction, useContext, useState } from 'react';
+import { StockValueContext } from '../../providers/StockValue';
 import styles from './resourceValue.module.scss';
 import { Icon } from '../icon/Icon';
 
 interface ResourceValueType {
   dividentSrc: string;
   divisorSrc: string;
-  minValue: number;
 }
 
-export const ResourceValue = ({ dividentSrc, divisorSrc, minValue }: ResourceValueType) => {
-  const [value, setValue] = useState(minValue);
+export const ResourceValue = ({ dividentSrc, divisorSrc}: ResourceValueType) => {
+  const { valuePerItem, setValuePerItem, minValuePerItem } = useContext(StockValueContext);
+  const [inputValue, setInputValue] = useState(valuePerItem);
   const maxValue = 20;
 
+  const updateStates = (newValue: SetStateAction<number>) => {
+    setInputValue(newValue);
+    setValuePerItem(newValue);
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value));
+    setInputValue(Number(e.target.value));
   };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);
 
-    if (currentValue <= minValue) {
-      setValue(minValue);
+    if (currentValue <= minValuePerItem) {
+      updateStates(minValuePerItem);
     } else if (currentValue >= maxValue) {
-      setValue(maxValue);
+      updateStates(maxValue);
     } else {
-      setValue(currentValue);
+      updateStates(currentValue);
     }
   };
   
@@ -38,9 +44,9 @@ export const ResourceValue = ({ dividentSrc, divisorSrc, minValue }: ResourceVal
         className={styles.input}
         onChange={handleInputChange}
         onBlur={handleOnBlur}
-        value={value}
+        value={inputValue}
         type={'number'}
-        min={minValue}
+        min={minValuePerItem}
         max={maxValue}
       />
       <span className={styles.currency}>M€</span>

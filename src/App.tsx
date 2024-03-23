@@ -1,4 +1,5 @@
 import styles from './app.module.scss';
+import { StockValueProvider } from './providers/StockValue';
 import { Energy } from './sections/energy/Energy';
 import { Heat } from './sections/heat/Heat';
 import { MegaCredit } from './sections/megaCredit/MegaCredit';
@@ -11,8 +12,12 @@ const App = () => (
     <h1 className={styles.header}>TFM - resources manager</h1>
     <MegaCredit />
     <Plants />
-    <Steel />
-    <Titanium />
+    <StockValueProvider initialValuePerItem={2}>
+      <Steel />
+    </StockValueProvider>
+    <StockValueProvider initialValuePerItem={3}>
+      <Titanium />
+    </StockValueProvider>
     <Energy />
     <Heat />
   </div>

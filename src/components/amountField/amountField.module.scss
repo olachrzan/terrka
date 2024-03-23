@@ -30,6 +30,12 @@
   font-size: 12px;
 }
 
+.info {
+  composes: title;
+  margin-top: 10px;
+  text-align: left;
+}
+
 .input {
   @include mixins.input;
 }
