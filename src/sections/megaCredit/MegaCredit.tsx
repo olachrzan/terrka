@@ -1,7 +1,7 @@
 import { AmountField } from '../../components/amountField/AmountField';
 import icon from './icon.png';
 import { Icon } from '../../components/icon/Icon';
-import { SectionWrapper } from '../wrapper/SectionWrapper';
+import { SectionWrapper } from '../../components/wrapper/SectionWrapper';
 
 export const MegaCredit = () => {
 

@@ -1,6 +1,6 @@
 import { Icon } from '../../components/icon/Icon';
 import { AmountField } from '../../components/amountField/AmountField';
-import { SectionWrapper } from '../wrapper/SectionWrapper';
+import { SectionWrapper } from '../../components/wrapper/SectionWrapper';
 import icon from './icon.png';
 
 export const Energy = () => {

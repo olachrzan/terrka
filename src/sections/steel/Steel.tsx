@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { StockValueContext } from '../../providers/StockValue';
 import { Icon } from '../../components/icon/Icon';
 import { AmountField } from '../../components/amountField/AmountField';
-import { SectionWrapper } from '../wrapper/SectionWrapper';
+import { SectionWrapper } from '../../components/wrapper/SectionWrapper';
 import { ResourceValue } from '../../components/resourceValue/ResourceValue';
 import buildingIcon from './buildingIcon.png';
 import icon from './icon.png';
