@@ -2,6 +2,7 @@ import { ChangeEvent, SetStateAction, useState } from 'react';
 import styles from './amountField.module.scss';
 
 interface AmountFieldType {
+  hasAdditionalButton?: boolean;
   defaultValue?: number;
   minValue?: number;
   isStock?: boolean;
@@ -12,6 +13,7 @@ interface AmountFieldType {
 }
 
 export const AmountField = ({
+  hasAdditionalButton = false,
   monetizableResources,
   defaultValue = 1,
   isStock = false,
@@ -38,18 +40,22 @@ export const AmountField = ({
     updateStates(prev => prev + 1);
   };
 
-  const decreaseInputValue = () => {
-    if (inputValue - 1 < minValue) {
+  const decreaseInputValue = (step: number) => {
+    if (inputValue - step < minValue) {
       updateStates(minValue);
     } else {
-      updateStates(prev => prev - 1);
+      updateStates(prev => prev - step);
     }
   };
 
   return (
     <div className={styles.wrapper}>
       <span className={styles.title}>{isStock ? 'stock:' : 'production:' }</span>
-      <button className={styles.changeValueButton} onClick={decreaseInputValue}>
+      <button
+        className={styles.changeValueButton}
+        onClick={() => decreaseInputValue(1)}
+        disabled={inputValue <= minValue}
+      >
         {'-1'}
       </button>
       <input
@@ -67,6 +73,15 @@ export const AmountField = ({
         <span className={styles.info}>
           Stock value: <b>{monetizableResources.stockValue}</b>M€
         </span>
+      )}
+      {hasAdditionalButton && (
+        <button
+          className={`${styles.changeValueButton} ${styles.centeredButton}`}
+          onClick={() => decreaseInputValue(8)}
+          disabled={inputValue < 8}
+        >
+          {'-8'}
+        </button>
       )}
     </div>
   );

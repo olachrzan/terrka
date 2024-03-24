@@ -9,7 +9,7 @@ export const Heat = () => {
     <SectionWrapper>
       <Icon src={icon} />
       <AmountField />
-      <AmountField isStock />
+      <AmountField isStock hasAdditionalButton />
     </SectionWrapper>
   )
 };
