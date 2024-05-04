@@ -64,7 +64,7 @@ export const AmountField = ({
         onBlur={handleOnBlur}
         min={minValue}
         type={'number'}
-        value={inputValue}
+        value={inputValue.toString()}
       />
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
         {'+1'}

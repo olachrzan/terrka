@@ -44,7 +44,7 @@ export const ResourceValue = ({ dividentSrc, divisorSrc}: ResourceValueType) => 
         className={styles.input}
         onChange={handleInputChange}
         onBlur={handleOnBlur}
-        value={inputValue}
+        value={inputValue.toString()}
         type={'number'}
         min={minValuePerItem}
         max={maxValue}
