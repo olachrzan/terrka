@@ -4,12 +4,13 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
 }
 
 .input {
   @include mixins.input;
   width: 30px;
+  border-radius: 6px;
 }
 
 .currency {
