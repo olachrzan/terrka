@@ -1,0 +1,21 @@
+@use '../../config/variables' as v;
+@use '../../config/mixins';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px
+}
+
+.text {
+  color: v.$brown;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.input {
+  @include mixins.input;
+  width: 55px;
+  border-radius: 6px;
+}
