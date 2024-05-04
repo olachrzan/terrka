@@ -1,0 +1,8 @@
+@use '../../config/variables.scss' as v;
+@use '../../config/mixins';
+
+.button {
+  @include mixins.button;
+  margin-left: auto;
+  padding: 8px;
+}
