@@ -9,7 +9,7 @@
 
 .text {
   color: v.$brown;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -17,4 +17,11 @@
   @include mixins.input;
   width: 55px;
   border-radius: 6px;
+}
+
+.changeValueButton {
+  @include mixins.button;
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
 }

@@ -15,6 +15,10 @@ export const TerraformRating = () => {
     setInputValue(currentValue < minValue ? minValue : currentValue);
   };
 
+  const increaseInputValue = () => {
+    setInputValue(prev => prev + 1);
+  };
+
   return (
     <div className={styles.wrapper}>
       <span className={styles.text}>TR = </span>
@@ -26,6 +30,9 @@ export const TerraformRating = () => {
         type={'number'}
         value={inputValue.toString()}
       />
+      <button className={styles.changeValueButton} onClick={increaseInputValue}>
+        {'+1'}
+      </button>
     </div>
   );
 };
