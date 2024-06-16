@@ -4,5 +4,5 @@
 .button {
   @include mixins.button;
   margin-left: auto;
-  padding: 8px;
+  padding-inline: 8px;
 }

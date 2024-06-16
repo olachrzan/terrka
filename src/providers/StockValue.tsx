@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 
 interface StockValueProviderType {
   initialValuePerItem: number;
@@ -28,15 +28,7 @@ export const StockValueContext = createContext<StockValueContextType>(defaultCon
 export const StockValueProvider = ({ children, initialValuePerItem }: StockValueProviderType) => {
   const [stockAmount, setStockAmount] = useState(1);
   const [valuePerItem, setValuePerItem] = useState(initialValuePerItem);
-  const [stockValue, setStockValue] = useState(multiply());
-
-  useEffect(() => {
-    setStockValue(multiply());
-  }, [stockAmount, valuePerItem]);
-
-  function multiply() {
-    return stockAmount * valuePerItem
-  }
+  const stockValue = stockAmount * valuePerItem;
 
   return (
     <StockValueContext.Provider value={{

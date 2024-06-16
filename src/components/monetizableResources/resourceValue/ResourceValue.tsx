@@ -1,6 +1,7 @@
-import { ChangeEvent, SetStateAction, useContext, useState } from 'react';
+import { ChangeEvent, SetStateAction, useContext } from 'react';
 import { StockValueContext } from '../../../providers/StockValue';
 import styles from './resourceValue.module.scss';
+import { useInput } from '../../../hooks/useInput';
 import { Icon } from '../../../components/icon/Icon';
 
 interface ResourceValueType {
@@ -10,16 +11,12 @@ interface ResourceValueType {
 
 export const ResourceValue = ({ dividentSrc, divisorSrc}: ResourceValueType) => {
   const { valuePerItem, setValuePerItem, minValuePerItem } = useContext(StockValueContext);
-  const [inputValue, setInputValue] = useState(valuePerItem);
+  const { inputValue, setInputValue, handleInputChange } = useInput(valuePerItem);
   const maxValue = 20;
 
   const updateStates = (newValue: SetStateAction<number>) => {
     setInputValue(newValue);
     setValuePerItem(newValue);
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(e.target.value));
   };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {

@@ -2,11 +2,12 @@ import styles from './app.module.scss';
 import { StockValueProvider } from './providers/StockValue';
 import { TerraformRating } from './components/terraformRating/TerraformRating';
 import { NextGeneration } from './components/nextGeneration/NextGeneration';
-import { MegaCredit } from './sections/megaCredit/MegaCredit';
-import { Plants } from './sections/plants/Plants';
-import { MonetizableResources } from './sections/monetizableResources/MonetizableResources';
-import { Energy } from './sections/energy/Energy';
-import { Heat } from './sections/heat/Heat';
+import { MegaCredit } from './components/megaCredit/MegaCredit';
+import { MonetizableResources } from './components/monetizableResources/MonetizableResources';
+import { ResourceBox } from './components/resourceBox/ResourceBox';
+import plantsLogo from './images/plantsLogo.png';
+import energyLogo from './images/energyLogo.png';
+import heatLogo from './images/heatLogo.png';
 
 const App = () => (
   <div className={styles.wrapper}>
@@ -14,15 +15,15 @@ const App = () => (
     <TerraformRating />
     <NextGeneration />
     <MegaCredit />
-    <Plants />
+    <ResourceBox icon={plantsLogo} hasAdditionalButton />
     <StockValueProvider initialValuePerItem={2}>
       <MonetizableResources isSteel />
     </StockValueProvider>
     <StockValueProvider initialValuePerItem={3}>
       <MonetizableResources />
     </StockValueProvider>
-    <Energy />
-    <Heat />
+    <ResourceBox icon={energyLogo} />
+    <ResourceBox icon={heatLogo} hasAdditionalButton/>
   </div>
 );
 

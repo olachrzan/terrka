@@ -1,13 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import styles from './terraformRating.module.scss';
+import { useInput } from '../../hooks/useInput';
 
 export const TerraformRating = () => {
-  const [inputValue, setInputValue] = useState(20);
+  const { inputValue, setInputValue, handleInputChange } = useInput(20);
   const minValue = 0;
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(e.target.value));
-  };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);

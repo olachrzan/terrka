@@ -1,5 +1,6 @@
-import { ChangeEvent, SetStateAction, useState } from 'react';
+import { ChangeEvent, SetStateAction } from 'react';
 import styles from './amountField.module.scss';
+import { useInput } from '../../hooks/useInput';
 
 interface AmountFieldType {
   hasAdditionalButton?: boolean;
@@ -19,15 +20,11 @@ export const AmountField = ({
   isStock = false,
   minValue = 0,
 }: AmountFieldType) => {
-  const [inputValue, setInputValue] = useState(defaultValue);
+  const { inputValue, setInputValue, handleInputChange } = useInput(defaultValue);
 
   const updateStates = (newValue: SetStateAction<number>) => {
     setInputValue(newValue);
     monetizableResources && monetizableResources.updateStockAmount(newValue);
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(e.target.value));
   };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
