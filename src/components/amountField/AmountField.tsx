@@ -1,36 +1,35 @@
-import { ChangeEvent, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import styles from './amountField.module.scss';
-import { useInput } from '../../hooks/useInput';
 
 interface AmountFieldType {
+  setInputValue: Dispatch<SetStateAction<number>>,
   hasAdditionalButton?: boolean;
-  defaultValue?: number;
-  minValue?: number;
+  stockValue?: number;
+  inputValue: number,
   isStock?: boolean;
-  monetizableResources?: {
-    updateStockAmount: (value: SetStateAction<number>) => void;
-    stockValue: number;
-  };
+  minValue?: number;
 }
 
 export const AmountField = ({
   hasAdditionalButton = false,
-  monetizableResources,
-  defaultValue = 1,
   isStock = false,
+  setInputValue,
   minValue = 0,
+  inputValue,
+  stockValue,
 }: AmountFieldType) => {
-  const { inputValue, setInputValue, handleInputChange } = useInput(defaultValue);
-
   const updateStates = (newValue: SetStateAction<number>) => {
     setInputValue(newValue);
-    monetizableResources && monetizableResources.updateStockAmount(newValue);
   };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);
 
     updateStates(currentValue < minValue ? minValue : currentValue);
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(Number(e.target.value));
   };
 
   const increaseInputValue = () => {
@@ -66,9 +65,9 @@ export const AmountField = ({
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
         {'+1'}
       </button>
-      {monetizableResources && (
+      {stockValue && (
         <span className={styles.info}>
-          Stock value: <b>{monetizableResources.stockValue}</b>M€
+          Stock value: <b>{stockValue}</b>M€
         </span>
       )}
       {hasAdditionalButton && (

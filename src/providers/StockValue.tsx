@@ -30,15 +30,17 @@ export const StockValueProvider = ({ children, initialValuePerItem }: StockValue
   const [valuePerItem, setValuePerItem] = useState(initialValuePerItem);
   const stockValue = stockAmount * valuePerItem;
 
+  const value = {
+    minValuePerItem: initialValuePerItem,
+    setValuePerItem,
+    setStockAmount,
+    valuePerItem,
+    stockAmount,
+    stockValue
+  }
+
   return (
-    <StockValueContext.Provider value={{
-      minValuePerItem: initialValuePerItem,
-      setValuePerItem,
-      setStockAmount,
-      valuePerItem,
-      stockAmount,
-      stockValue,
-    }}>
+    <StockValueContext.Provider value={value}>
       {children}
     </StockValueContext.Provider>
   );
