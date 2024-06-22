@@ -1,8 +1,9 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, RefObject, SetStateAction } from 'react';
 import styles from './amountField.module.scss';
 
 interface AmountFieldType {
   setInputValue: Dispatch<SetStateAction<number>>,
+  inputRef?: RefObject<HTMLInputElement>;
   hasAdditionalButton?: boolean;
   stockValue?: number;
   inputValue: number,
@@ -17,6 +18,7 @@ export const AmountField = ({
   minValue = 0,
   inputValue,
   stockValue,
+  inputRef,
 }: AmountFieldType) => {
   const updateStates = (newValue: SetStateAction<number>) => {
     setInputValue(newValue);
@@ -61,11 +63,12 @@ export const AmountField = ({
         min={minValue}
         type={'number'}
         value={inputValue.toString()}
+        ref={inputRef}
       />
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
         {'+1'}
       </button>
-      {stockValue && (
+      {stockValue != null && (
         <span className={styles.info}>
           Stock value: <b>{stockValue}</b>M€
         </span>

@@ -1,8 +1,10 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import styles from './terraformRating.module.scss';
 import { useInput } from '../../hooks/useInput';
+import { RefsContext } from '../../providers/Refs';
 
 export const TerraformRating = () => {
+  const { terraformRatingRef } = useContext(RefsContext);
   const { inputValue, setInputValue, handleInputChange } = useInput(20);
   const minValue = 0;
 
@@ -26,6 +28,7 @@ export const TerraformRating = () => {
         min={minValue}
         type={'number'}
         value={inputValue.toString()}
+        ref={terraformRatingRef}
       />
       <button className={styles.changeValueButton} onClick={increaseInputValue}>
         {'+1'}

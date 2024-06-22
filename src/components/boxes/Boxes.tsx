@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { RefsContext } from '../../providers/Refs';
 import { StockValueProvider } from '../../providers/StockValue';
 import { MegaCredit } from '../megaCredit/MegaCredit';
 import { MonetizableResources } from '../monetizableResources/MonetizableResources';
@@ -7,11 +9,14 @@ import energyLogo from '../../images/energyLogo.png';
 import heatLogo from '../../images/heatLogo.png';
 
 export const Boxes = () => {
+  const { energyStockRef } = useContext(RefsContext);
+
   return (
     <>
       <MegaCredit />
       <ResourceBox
         icon={plantsLogo}
+        type={'plants'}
         hasAdditionalButton
       />
       <StockValueProvider initialValuePerItem={2}>
@@ -22,9 +27,12 @@ export const Boxes = () => {
       </StockValueProvider>
       <ResourceBox
         icon={energyLogo}
+        type={'energy'}
+        stockRef={energyStockRef}
       />
       <ResourceBox
         icon={heatLogo}
+        type={'heat'}
         hasAdditionalButton
       />
     </>
