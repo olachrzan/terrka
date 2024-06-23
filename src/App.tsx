@@ -3,6 +3,7 @@ import { RefsProvider } from './providers/Refs';
 import { TerraformRating } from './components/terraformRating/TerraformRating';
 import { NextGeneration } from './components/nextGeneration/NextGeneration';
 import { Boxes } from './components/boxes/Boxes';
+import { ResetGame } from './components/resetGame/ResetGame';
 
 const App = () => (
   <div className={styles.wrapper}>
@@ -11,6 +12,7 @@ const App = () => (
       <TerraformRating />
       <NextGeneration />
       <Boxes />
+      <ResetGame />
     </RefsProvider>
   </div>
 );
