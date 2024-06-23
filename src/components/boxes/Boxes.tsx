@@ -19,10 +19,10 @@ export const Boxes = () => {
         type={'plants'}
         hasAdditionalButton
       />
-      <StockValueProvider initialValuePerItem={2}>
-        <MonetizableResources isSteel />
+      <StockValueProvider isSteel>
+        <MonetizableResources />
       </StockValueProvider>
-      <StockValueProvider initialValuePerItem={3}>
+      <StockValueProvider>
         <MonetizableResources />
       </StockValueProvider>
       <ResourceBox

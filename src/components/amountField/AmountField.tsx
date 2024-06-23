@@ -20,14 +20,10 @@ export const AmountField = ({
   stockValue,
   inputRef,
 }: AmountFieldType) => {
-  const updateStates = (newValue: SetStateAction<number>) => {
-    setInputValue(newValue);
-  };
-
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);
 
-    updateStates(currentValue < minValue ? minValue : currentValue);
+    setInputValue(currentValue < minValue ? minValue : currentValue);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,14 +31,14 @@ export const AmountField = ({
   };
 
   const increaseInputValue = () => {
-    updateStates(prev => prev + 1);
+    setInputValue(prev => prev + 1);
   };
 
   const decreaseInputValue = (step: number) => {
     if (inputValue - step < minValue) {
-      updateStates(minValue);
+      setInputValue(minValue);
     } else {
-      updateStates(prev => prev - step);
+      setInputValue(prev => prev - step);
     }
   };
 

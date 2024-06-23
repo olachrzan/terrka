@@ -1,12 +1,16 @@
 import { ChangeEvent, useContext } from 'react';
 import styles from './terraformRating.module.scss';
-import { useInput } from '../../hooks/useInput';
 import { RefsContext } from '../../providers/Refs';
+import { useLsState } from '../../hooks/useLsState';
 
 export const TerraformRating = () => {
   const { terraformRatingRef } = useContext(RefsContext);
-  const { inputValue, setInputValue, handleInputChange } = useInput(20);
+  const [inputValue, setInputValue] = useLsState('terraformRating', 20)
   const minValue = 0;
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(Number(e.target.value));
+  };
 
   const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
     const currentValue = Number(e.target.value);

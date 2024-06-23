@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { StockValueContext } from '../../providers/StockValue';
 import { RefsContext } from '../../providers/Refs';
 import { useEventListener } from '../../hooks/useEventListener';
+import { useLsState } from '../../hooks/useLsState';
 import { Icon } from '../../components/icon/Icon';
 import { AmountField } from '../../components/amountField/AmountField';
 import { SectionWrapper } from '../../components/wrapper/SectionWrapper';
@@ -11,10 +12,10 @@ import building from '../../images/building.png';
 import star from '../../images/titaniumLogo.png';
 import space from '../../images/space.png';
 
-export const MonetizableResources = ({ isSteel = false }) => {
+export const MonetizableResources = () => {
   const { nextGenButtonRef } = useContext(RefsContext);
-  const { stockAmount, setStockAmount, stockValue } = useContext(StockValueContext);
-  const [production, setProduction] = useState(1);
+  const { stockAmount, setStockAmount, stockValue, isSteel } = useContext(StockValueContext);
+  const [production, setProduction] = useLsState(`${isSteel ? 'steel' : 'titan'}Production`, 1);
 
   const triggerNextGeneration = () => {
     setStockAmount(prev => prev + production)

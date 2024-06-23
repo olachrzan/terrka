@@ -12,7 +12,7 @@ export const NextGeneration = () => {
   const onButtonClick = () => {
     if (!nextGenButtonRef.current) return;
 
-    const event = new Event("nextGeneration");
+    const event = new Event('nextGeneration');
     
     setIsLoading(true);
 
