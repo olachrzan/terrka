@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/terrka/static/css/main.24ac5039.css",
-    "main.js": "/terrka/static/js/main.828306df.js",
+    "main.css": "/terrka/static/css/main.1245e3c7.css",
+    "main.js": "/terrka/static/js/main.61471feb.js",
     "static/js/453.d3efb6aa.chunk.js": "/terrka/static/js/453.d3efb6aa.chunk.js",
-    "static/media/icon.png": "/terrka/static/media/icon.d2dc68f3c3bd81720ee5.png",
+    "static/media/megaCreditLogo.png": "/terrka/static/media/megaCreditLogo.f3e0cb419c6293d93af7.png",
     "static/media/space.png": "/terrka/static/media/space.665d1969e9e4440a7efa.png",
-    "static/media/star.png": "/terrka/static/media/star.96602dbc91370137dd8a.png",
-    "static/media/tools.png": "/terrka/static/media/tools.c031651461939a6f326d.png",
+    "static/media/heatLogo.png": "/terrka/static/media/heatLogo.c470cde98fef8e5ffaee.png",
+    "static/media/plantsLogo.png": "/terrka/static/media/plantsLogo.8751b719649240cecc7f.png",
+    "static/media/titaniumLogo.png": "/terrka/static/media/titaniumLogo.96602dbc91370137dd8a.png",
+    "static/media/energyLogo.png": "/terrka/static/media/energyLogo.d2dc68f3c3bd81720ee5.png",
+    "static/media/steelLogo.png": "/terrka/static/media/steelLogo.c031651461939a6f326d.png",
     "index.html": "/terrka/index.html",
-    "main.24ac5039.css.map": "/terrka/static/css/main.24ac5039.css.map",
-    "main.828306df.js.map": "/terrka/static/js/main.828306df.js.map",
+    "main.1245e3c7.css.map": "/terrka/static/css/main.1245e3c7.css.map",
+    "main.61471feb.js.map": "/terrka/static/js/main.61471feb.js.map",
     "453.d3efb6aa.chunk.js.map": "/terrka/static/js/453.d3efb6aa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.24ac5039.css",
-    "static/js/main.828306df.js"
+    "static/css/main.1245e3c7.css",
+    "static/js/main.61471feb.js"
   ]
 }
