@@ -1,7 +1,8 @@
-import { ChangeEvent, useContext } from 'react';
+import { useContext } from 'react';
 import { StockValueContext } from '../../../providers/StockValue';
 import styles from './resourceValue.module.scss';
 import { Icon } from '../../../components/icon/Icon';
+import { useInput } from '../../../hooks/useInput';
 
 interface ResourceValueType {
   dividentSrc: string;
@@ -10,24 +11,14 @@ interface ResourceValueType {
 
 export const ResourceValue = ({ dividentSrc, divisorSrc}: ResourceValueType) => {
   const { valuePerItem, setValuePerItem, minValuePerItem } = useContext(StockValueContext);
-  const maxValue = 20;
+  const maxValuePerItem = 20;
+  const { handleInputChange, handleOnBlur } = useInput({
+    setInputValue: setValuePerItem,
+    minValue: minValuePerItem,
+    maxValue: maxValuePerItem,
+    inputValue: valuePerItem,
+  });
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValuePerItem(Number(e.target.value));
-  };
-
-  const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    const currentValue = Number(e.target.value);
-
-    if (currentValue <= minValuePerItem) {
-      setValuePerItem(minValuePerItem);
-    } else if (currentValue >= maxValue) {
-      setValuePerItem(maxValue);
-    } else {
-      setValuePerItem(currentValue);
-    }
-  };
-  
   return (
     <div className={styles.wrapper}>
       <Icon src={dividentSrc} isSmall/>
@@ -41,7 +32,7 @@ export const ResourceValue = ({ dividentSrc, divisorSrc}: ResourceValueType) => 
         value={valuePerItem.toString()}
         type={'number'}
         min={minValuePerItem}
-        max={maxValue}
+        max={maxValuePerItem}
       />
       <span className={styles.currency}>M€</span>
     </div>

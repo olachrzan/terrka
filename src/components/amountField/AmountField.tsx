@@ -1,8 +1,9 @@
-import { ChangeEvent, Dispatch, RefObject, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 import styles from './amountField.module.scss';
+import { useInput } from '../../hooks/useInput';
 
 interface AmountFieldType {
-  setInputValue: Dispatch<SetStateAction<number>>,
+  setInputValue: Dispatch<SetStateAction<number>>;
   inputRef?: RefObject<HTMLInputElement>;
   hasAdditionalButton?: boolean;
   stockValue?: number;
@@ -20,27 +21,13 @@ export const AmountField = ({
   stockValue,
   inputRef,
 }: AmountFieldType) => {
-  const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    const currentValue = Number(e.target.value);
-
-    setInputValue(currentValue < minValue ? minValue : currentValue);
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(e.target.value));
-  };
-
-  const increaseInputValue = () => {
-    setInputValue(prev => prev + 1);
-  };
-
-  const decreaseInputValue = (step: number) => {
-    if (inputValue - step < minValue) {
-      setInputValue(minValue);
-    } else {
-      setInputValue(prev => prev - step);
-    }
-  };
+  const maxValue = 999;
+  const {
+    increaseInputValue,
+    decreaseInputValue,
+    handleInputChange,
+    handleOnBlur
+  } = useInput({ inputValue, maxValue, minValue, setInputValue });
 
   return (
     <div className={styles.wrapper}>
@@ -57,11 +44,16 @@ export const AmountField = ({
         onChange={handleInputChange}
         onBlur={handleOnBlur}
         min={minValue}
+        max={maxValue}
         type={'number'}
         value={inputValue.toString()}
         ref={inputRef}
       />
-      <button className={styles.changeValueButton} onClick={increaseInputValue}>
+      <button
+        className={styles.changeValueButton}
+        onClick={increaseInputValue}
+        disabled={inputValue >= maxValue}
+      >
         {'+1'}
       </button>
       {stockValue != null && (
