@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { StockValueContext } from '../../providers/StockValue';
-import { RefsContext } from '../../providers/Refs';
-import { useEventListener } from '../../hooks/useEventListener';
+import { useNextGeneration } from '../../hooks/useNextGeneration';
 import { useLsState } from '../../hooks/useLsState';
 import { Icon } from '../../components/icon/Icon';
 import { AmountField } from '../../components/amountField/AmountField';
@@ -13,7 +12,6 @@ import star from '../../images/titaniumLogo.png';
 import space from '../../images/space.png';
 
 export const MonetizableResources = () => {
-  const { nextGenButtonRef } = useContext(RefsContext);
   const { stockAmount, setStockAmount, stockValue, isSteel } = useContext(StockValueContext);
   const [production, setProduction] = useLsState(`${isSteel ? 'steel' : 'titan'}Production`, 1);
 
@@ -21,7 +19,7 @@ export const MonetizableResources = () => {
     setStockAmount(prev => prev + production)
   };
 
-  useEventListener(nextGenButtonRef, 'nextGeneration', triggerNextGeneration, [production]); 
+  useNextGeneration({ callback: triggerNextGeneration, deps: [production]}); 
 
   return (
     <SectionWrapper>

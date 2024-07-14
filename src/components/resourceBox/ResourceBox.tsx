@@ -1,6 +1,6 @@
 import { RefObject, useContext } from 'react';
 import { RefsContext } from '../../providers/Refs';
-import { useEventListener } from '../../hooks/useEventListener';
+import { useNextGeneration } from '../../hooks/useNextGeneration';
 import { useLsState } from '../../hooks/useLsState';
 import { Icon } from '../../components/icon/Icon';
 import { AmountField } from '../../components/amountField/AmountField';
@@ -14,7 +14,7 @@ interface ResourceBoxType {
 }
 
 export const ResourceBox = ({ icon, type, stockRef, hasAdditionalButton }: ResourceBoxType) => {
-  const { nextGenButtonRef, energyStockRef } = useContext(RefsContext);
+  const { energyStockRef } = useContext(RefsContext);
   const [production, setProduction] = useLsState(`${type}Production`, 1);
   const [stock, setStock] = useLsState(`${type}Stock`, 1);
 
@@ -30,7 +30,7 @@ export const ResourceBox = ({ icon, type, stockRef, hasAdditionalButton }: Resou
     }
   };
 
-  useEventListener(nextGenButtonRef, 'nextGeneration', triggerNextGeneration, [production]); 
+  useNextGeneration({ callback: triggerNextGeneration, deps: [production]}); 
 
   return (
     <SectionWrapper>
