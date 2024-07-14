@@ -19,19 +19,39 @@ export const useLsState = (key: string, defaultValue: number): [number, Dispatch
   }, [itemValue]);
 
   function setItemToLS(value: number) {
-    localStorage.setItem(key, JSON.stringify(value));
+    const currentDate = new Date();
+    const dayInMiliseconds = 24 * 60 * 60 * 1000;
+    const item = {
+        value,
+        expiry: currentDate.getTime() + dayInMiliseconds,
+    };
+
+    localStorage.setItem(key, JSON.stringify(item));
+  }
+
+  function setDefaultValue() {
+    setItemToLS(defaultValue);
+      
+    return defaultValue;
   }
   
   function getInitialValue() {
     const value = localStorage.getItem(key);
 
     if (!value) {
-      setItemToLS(defaultValue);
-      
-      return defaultValue;
+      return setDefaultValue();
     }
 
-    return JSON.parse(value);
+    const item = JSON.parse(value);
+    const currentDate = new Date();
+
+    if (currentDate.getTime() > item.expiry) {
+      localStorage.removeItem(key);
+      
+      return setDefaultValue();
+    }
+
+    return item.value;
   }
 
   return [itemValue, setItemValue];
