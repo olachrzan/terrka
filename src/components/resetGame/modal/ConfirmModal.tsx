@@ -22,7 +22,7 @@ export const ConfirmModal = ({ closeHandler, saveHandler }: ConfirmModalType) =>
         <p>Are you sure you want to reset the game?</p>
         <div className={styles.buttons}>
           <button className={styles.button} onClick={closeHandler}>No</button>
-          <button className={styles.button} onClick={saveHandler}>Yes</button>
+          <button className={`${styles.button} ${styles.redButton}`} onClick={saveHandler}>Yes</button>
         </div>
       </div>
     </div>

@@ -6,5 +6,5 @@ interface IconType {
 }
 
 export const Icon = ({ src, isSmall }: IconType) => (
-  <img className={styles.icon} src={src} alt={''} data-css-is-small={isSmall} />
+  <img className={styles.icon} src={src} alt={''} data-css-is-small={isSmall} height={isSmall ? 27 : 60} />
 );

@@ -1,4 +1,5 @@
 @use '../../config/mixins';
+@use '../../config/variables.scss' as v;
 
 .button {
   @include mixins.button;
@@ -6,4 +7,5 @@
   width: 130px;
   height: 30px;
   margin: 25px auto 0;
+  background-color: v.$lightRed;
 }
