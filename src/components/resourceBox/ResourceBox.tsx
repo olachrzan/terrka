@@ -7,7 +7,7 @@ import { AmountField } from '../../components/amountField/AmountField';
 import { SectionWrapper } from '../../components/wrapper/SectionWrapper';
 
 interface ResourceBoxType {
-  stockRef?: RefObject<HTMLInputElement>;
+  stockRef?: RefObject<HTMLInputElement | null>;
   type: 'plants' | 'energy'| 'heat';
   hasAdditionalButton?: boolean;
   icon: string;

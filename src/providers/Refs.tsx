@@ -1,9 +1,9 @@
 import { ReactNode, RefObject, createContext, createRef, useRef } from 'react';
 
 interface RefsContextType {
-  terraformRatingRef: RefObject<HTMLInputElement>;
-  nextGenButtonRef: RefObject<HTMLButtonElement>;
-  energyStockRef: RefObject<HTMLInputElement>;
+  terraformRatingRef: RefObject<HTMLInputElement | null>;
+  nextGenButtonRef: RefObject<HTMLButtonElement | null>;
+  energyStockRef: RefObject<HTMLInputElement | null>;
 }
 
 const defaultContextValue = {

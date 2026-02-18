@@ -4,7 +4,7 @@ import { useInput } from '../../hooks/useInput';
 
 interface AmountFieldType {
   setInputValue: Dispatch<SetStateAction<number>>;
-  inputRef?: RefObject<HTMLInputElement>;
+  inputRef?: RefObject<HTMLInputElement | null>;
   hasAdditionalButton?: boolean;
   stockValue?: number;
   inputValue: number,

@@ -5,9 +5,14 @@ import { RefsContext } from '../../providers/Refs';
 export const NextGeneration = () => {
   const { nextGenButtonRef } = useContext(RefsContext);
   const [isLoading, setIsLoading] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout>(null);
 
-  useEffect(() => () => clearTimeout(timerRef.current), []);
+  useEffect(() => () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+  }, []);
+
 
   const onButtonClick = () => {
     if (!nextGenButtonRef.current) return;
