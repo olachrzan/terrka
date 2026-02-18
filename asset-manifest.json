@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/terrka/static/css/main.1245e3c7.css",
-    "main.js": "/terrka/static/js/main.61471feb.js",
-    "static/js/453.d3efb6aa.chunk.js": "/terrka/static/js/453.d3efb6aa.chunk.js",
+    "main.css": "/terrka/static/css/main.0d512596.css",
+    "main.js": "/terrka/static/js/main.226ad49b.js",
     "static/media/megaCreditLogo.png": "/terrka/static/media/megaCreditLogo.f3e0cb419c6293d93af7.png",
     "static/media/space.png": "/terrka/static/media/space.665d1969e9e4440a7efa.png",
     "static/media/heatLogo.png": "/terrka/static/media/heatLogo.c470cde98fef8e5ffaee.png",
@@ -11,12 +10,11 @@
     "static/media/energyLogo.png": "/terrka/static/media/energyLogo.d2dc68f3c3bd81720ee5.png",
     "static/media/steelLogo.png": "/terrka/static/media/steelLogo.c031651461939a6f326d.png",
     "index.html": "/terrka/index.html",
-    "main.1245e3c7.css.map": "/terrka/static/css/main.1245e3c7.css.map",
-    "main.61471feb.js.map": "/terrka/static/js/main.61471feb.js.map",
-    "453.d3efb6aa.chunk.js.map": "/terrka/static/js/453.d3efb6aa.chunk.js.map"
+    "main.0d512596.css.map": "/terrka/static/css/main.0d512596.css.map",
+    "main.226ad49b.js.map": "/terrka/static/js/main.226ad49b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1245e3c7.css",
-    "static/js/main.61471feb.js"
+    "static/css/main.0d512596.css",
+    "static/js/main.226ad49b.js"
   ]
 }
